@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Traits;
+namespace Prettus\Repository\Traits;
 
 trait Respondable {
     /**
@@ -106,6 +106,16 @@ trait Respondable {
     protected function respondInternalError($message = 'Internal Error')
     {
         return $this->respondError($message, 500);
+    }
+    
+    /**
+     * Respond with allow permissions.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondCheckPermissions($isAllow)
+    {
+        return $this->respond(['allowed' => $isAllow]);
     }
 
 }
